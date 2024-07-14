@@ -74,7 +74,7 @@ static int getToken() {
             i++;
         } while (isdigit(lastChar) && i < sizeof(numStr));
 
-        numStr[i] = '\n';
+        numStr[i] = '\0';
 
         numValue = atoi(numStr);
         return tok_number;
