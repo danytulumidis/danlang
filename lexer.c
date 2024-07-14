@@ -59,19 +59,40 @@ static int getToken() {
         return tok_identifier;
     }
 
-    // Handles numeric value
+    // Handles numeric values
     if (isdigit(lastChar)) {
-        char numStr[20];
+        char numStr[10];
         i = 0;
 
         do {
             numStr[i] = lastChar;
             lastChar = getchar();
             i++;
-        } while (isdigit(lastChar));
+        } while (isdigit(lastChar) && i < sizeof(numStr));
 
         numStr[i] = '\n';
 
         numValue = atoi(numStr);
+        return tok_number;
     }
+
+    // Handles comments and skip to the end of the line
+    if (lastChar == '#') {
+        do {
+            lastChar = getchar();
+        } while (lastChar != EOF && lastChar != '\n' && lastChar != '\r');
+
+        if (lastChar != EOF) {
+            return getToken();
+        }
+    }
+
+    if (lastChar == EOF) {
+        return tok_eof;
+    }
+
+    // When no token is found just return ASCII value (probably a "+,- etc." sign)
+    int currChar = lastChar;
+    lastChar = getchar();
+    return currChar;
 }
