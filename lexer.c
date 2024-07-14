@@ -56,6 +56,10 @@ static int getToken() {
             return tok_int;
         }
 
+        if (strcmp(strIdent, "yell")) {
+            return tok_yell;
+        }
+
         return tok_identifier;
     }
 
