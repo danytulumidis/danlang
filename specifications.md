@@ -36,3 +36,7 @@ fn foo(int number): number {
 ### Loops
 
 For Loop
+
+### Built-in functions
+
+yell (print to console)
