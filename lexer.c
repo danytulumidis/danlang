@@ -1,38 +1,17 @@
 // TODO: Research dynamic allocation for strIdent
-// TODO: Research static keyword in c and use
 
+#include "lexer.h"
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-enum Token {
-    tok_eof = -1,
-
-    // commands
-    tok_fn = -2,
-
-    // data types
-    tok_int = -3,
-
-    // built-in functions
-    tok_yell = -4,
-
-    // primary
-    tok_identifier = -5,
-    tok_number = -6,
-};
-
-static char strIdent[20];
-static int numValue;
-
 // Return the next token from the input
-static int getToken() {
+int getToken() {
     static int lastChar = ' ';
     static int i;
 
-    // Ignore whitespaces and start to loop and getting input till its not a
-    // whitespace anymore
+    // Ignore whitespaces and start to loop and getting input till its not a whitespace anymore
     while (isspace(lastChar)) {
         lastChar = getchar();
     }
