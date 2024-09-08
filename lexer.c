@@ -6,6 +6,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+int numValue;
+char strIdent[80];
+
 // Return the next token from the input
 int getToken() {
     static int lastChar = ' ';
