@@ -1,6 +1,6 @@
 // TODO: Research dynamic allocation for strIdent
 
-#include "lexer.h"
+#include "./lexer.h"
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,7 +14,7 @@ int getToken() {
     static int lastChar = ' ';
     static int i;
 
-    // Ignore whitespaces and start to loop and getting input till its not a whitespace anymore
+    // Ignore whitespaces and loop and getting input till its not a whitespace
     while (isspace(lastChar)) {
         lastChar = getchar();
     }
